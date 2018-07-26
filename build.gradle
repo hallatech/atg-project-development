@@ -1,0 +1,11 @@
+plugins {
+  id "net.hallatech.atg-runassembler" version("0.1")
+}
+
+runAssembler {
+  storefront {
+    outputFileName = "ATGStorefront.ear"
+    modules = ["DCS"]
+    jboss = true
+  }
+}
