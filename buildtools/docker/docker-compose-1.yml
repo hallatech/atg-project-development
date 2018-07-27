@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: oracle/database:12.2.0.1-se2
+    ports:
+    - 1521:1521
+    volumes:
+    - atgdb_vol:/opt/oracle/oradata
+    - ./buildtools/sql:/atg/sql
+    - /tmp/ATG/ATG11.3:/atg/ATG11.3
+    - /tmp/drivers:/drivers
+    environment:
+    - ORACLE_PWD=Admin123
+
+volumes:
+  atgdb_vol:
+    external: true

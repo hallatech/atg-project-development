@@ -1,0 +1,66 @@
+Top level module list for Datasource Production Core: DafEar.Admin,DPS,DSS,ContentMgmt,DCS.PublishingAgent,PublishingAgent
+
+Found 54 of 54 previously unrun tasks for Datasource Production Core
+1 DAS : sql/db_components/oracle/id_generator.sql
+2 DAS : sql/db_components/oracle/dms_limbo_ddl.sql
+3 DAS : sql/db_components/oracle/cluster_name_ddl.sql
+4 DAS : sql/db_components/oracle/create_sql_jms_ddl.sql
+5 DAS : sql/db_components/oracle/create_gsa_subscribers_ddl.sql
+6 DAS : sql/db_components/oracle/create_sds.sql
+7 DAS : sql/db_components/oracle/integration_data_ddl.sql
+8 DAS : sql/db_components/oracle/nucleus_security_ddl.sql
+9 DAS : sql/db_components/oracle/media_ddl.sql
+10 DAS : sql/db_components/oracle/deployment_ddl.sql
+11 DAS : sql/db_components/oracle/sitemap_ddl.sql
+12 DAS : sql/db_components/oracle/purge_ddl.sql
+13 DAS : sql/db_components/oracle/usage_tracking_ddl.sql
+14 DAS : sql/db_components/oracle/rest_resource_ddl.sql
+15 DAS : sql/db_components/oracle/seo_ddl.sql
+16 DAS : sql/db_components/oracle/site_ddl.sql
+17 DAS : sql/db_components/oracle/create_staff_ddl.sql
+18 DAS : sql/db_components/oracle/create_system_config.sql
+19 DAS : sql/db_components/oracle/dynamic_metadata_ddl.sql
+20 DAS : sql/db_components/oracle/backing_maps_ddl.sql
+
+21 DPS : sql/db_components/oracle/user_ddl.sql
+22 DPS : sql/db_components/oracle/logging_ddl.sql
+23 DPS : sql/db_components/oracle/logging_init.sql
+24 DPS : sql/db_components/oracle/personalization_ddl.sql
+
+25 DSS : sql/db_components/oracle/business_process_rpt_ddl.sql
+26 DSS : sql/db_components/oracle/das_mappers.sql
+27 DSS : sql/db_components/oracle/dps_mappers.sql
+28 DSS : sql/db_components/oracle/dss_mappers.sql
+29 DSS : sql/db_components/oracle/markers_ddl.sql
+30 DSS : sql/db_components/oracle/profile_bp_markers_ddl.sql
+31 DSS : sql/db_components/oracle/scenario_ddl.sql
+
+32 ContentMgmt : sql/db_components/oracle/content_mgmt_ddl.sql
+33 ContentMgmt : sql/db_components/oracle/wcm_backing_maps_ddl.sql
+
+34 DCS : sql/db_components/oracle/claimable_ddl.sql
+35 DCS : sql/db_components/oracle/commerce_user.sql
+36 DCS : sql/db_components/oracle/dcs_mappers.sql
+37 DCS : sql/db_components/oracle/inventory_ddl.sql
+38 DCS : sql/db_components/oracle/order_ddl.sql
+39 DCS : sql/db_components/oracle/contracts_ddl.sql
+40 DCS : sql/db_components/oracle/organization_ddl.sql
+41 DCS : sql/db_components/oracle/order_markers_ddl.sql
+42 DCS : sql/db_components/oracle/user_giftlist_ddl.sql
+43 DCS : sql/db_components/oracle/user_promotion_ddl.sql
+44 DCS : sql/db_components/oracle/invoice_ddl.sql
+45 DCS : sql/db_components/oracle/order_returns_ddl.sql
+46 DCS : sql/db_components/oracle/priceLists_ddl.sql
+47 DCS : sql/db_components/oracle/product_catalog_ddl.sql
+48 DCS : sql/db_components/oracle/custom_catalog_ddl.sql
+49 DCS : sql/db_components/oracle/promotion_ddl.sql
+50 DCS : sql/db_components/oracle/location_ddl.sql
+51 DCS : sql/db_components/oracle/dcs_content_mgmt_ddl.sql
+52 DCS : sql/db_components/oracle/dcs_backing_maps_ddl.sql
+53 DCS : sql/db_components/oracle/commerce_site_ddl.sql
+54 DCS : sql/db_components/oracle/create_cms_procedures.sql
+
+Importing ( 1 of 1 ) /CIM/tmp/import/nonswitchingCore-import1.xml:
+/DAS/install/data/dynAdminRepo.xml to /atg/dynamo/security/AdminSqlRepository 
+/DCS/install/data/appeasementData.xml to /atg/commerce/order/OrderRepository 
+/DCS/install/data/returnData.xml to /atg/commerce/custsvc/CsrRepository 

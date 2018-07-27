@@ -5,7 +5,7 @@ plugins {
 runAssembler {
   storefront {
     outputFileName = "ATGStorefront.ear"
-    modules = ["DCS"]
+    modules = ["DafEar.Admin","DPS","DSS","ContentMgmt","DCS.PublishingAgent","PublishingAgent"]
     jboss = true
   }
 }
