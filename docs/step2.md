@@ -1,5 +1,7 @@
 # Initial Project Setup steps
 
+# Connecting to a DB and configuring DB as code
+
 ### Pre-requisites
 - A docker database image 
 - Oracle JDK8 JDBC driver (download from https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html)

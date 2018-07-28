@@ -11,6 +11,7 @@ We will target a JBoss application server and an Oracle database
 # Project Evolution
 
 [Initial Project Setup - build setup step 1 - assembling a base admin EAR](docs/step1.md)
+[Initial Project Setup - build setup step 2 - connecting to a DB and configuring Liquibase](docs/step2.md)
 
 
 
