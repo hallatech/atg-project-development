@@ -202,7 +202,84 @@
   }
   ```
   
-- Now we are ready to introduce a liquibase plugin to the build and configure it to run Liquibase to install the DDL.
+- Now we are ready to introduce the liquibase plugin to the build and configure it to run Liquibase to install the DDL.
+  Note: You need to find a relevant JDBC driver either from maven central, jcenter, your internal Nexus/Artifact repo, or local file system. Configure accordingly.
+  ```
+  repositories {
+    jcenter()
+  }
+  
+  dependencies {
+    liquibaseRuntime 'org.liquibase:liquibase-core:3.6.1'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.0.0'
+    liquibaseRuntime 'com.github.noraui:ojdbc8:12.2.0.1'
+  }
+  
+  liquibase {
+    activities {
+      core {
+        changeLogFile 'Liquibase/install/core/core-changelog.groovy'
+        url 'jdbc:oracle:thin:@//localhost:1521/ORCLPDB1'
+        username 'atg'
+        password 'atg'
+      }
+    }
+  }
+
+  ```
+  
+- Run `gradle tasks` to see the list of tasks for Liquibase. Run `gradle validate` to validate your initial configuration of the plugin.
+
+- Make sure you have an empty schema to start with, so if necessart, drop and recreate the atg user.
+
+- Run `gradle update` to load the schema. We should now hit a known issue with the DDL:
+  ```bash
+  $ g update
+  
+  > Task :update
+  liquibase-plugin: Running the 'core' activity...
+  Starting Liquibase at Sat, 28 Jul 2018 11:25:15 KST (version 3.6.1 built at 2018-04-11 09:05:04)
+  Unexpected error running Liquibase: ORA-00900: invalid SQL statement
+   [Failed SQL: Pupdate_count := SQL%ROWCOUNT]
+  liquibase.exception.MigrationFailedException: Migration failed for change set Liquibase/install/core/ddl/atg/DAS/install.groovy::core_atg_das_ddl::hallatech:
+       Reason: liquibase.exception.DatabaseException: ORA-00900: invalid SQL statement
+   [Failed SQL: Pupdate_count := SQL%ROWCOUNT]
+  ...
+  ```
+  There are some procedures in the DDL that need a little more explicit declaration.
+  
+- Extract the procs from `create_sql_jms_ddl.sql` to its own file in a `procs` directory. Embed the procs in the own changeSets. Update the core changelog to include that file.
+  ```bash
+  databaseChangeLog {
+    include(file:'Liquibase/install/core/ddl/atg/install.groovy')
+    include(file:'Liquibase/install/core/procs/atg/install.groovy')
+  }
+  ```
+  
+- Running again should result in another error as there are procs defined in `create_cms_procedures.sql`. In the DCS directory set the _splitStatements_ option to false:
+  ```bash
+  sqlFile(path:'Liquibase/install/core/ddl/atg/DCS/create_cms_procedures.sql',splitStatements:false)
+  ```
+  This should now produce a successful liquibase installation of the DDL. *Note* you might have to recreate the schema the first time to avoid the re-insert of previous tables.
+  Make sure once its all working that you retest from a clean schema.
+
+  ```bash
+  $ g update
+  
+  > Task :update
+  liquibase-plugin: Running the 'core' activity...
+  Starting Liquibase at Sat, 28 Jul 2018 11:51:59 KST (version 3.6.1 built at 2018-04-11 09:05:04)
+  Liquibase: Update has been successful.
+  
+  BUILD SUCCESSFUL in 7s
+  1 actionable task: 1 executed
+  ```
+  You can also check the Liquibase changelog table:  
+  `select id, tag, orderexecuted from databasechangelog order by orderexecuted;`
+  
+  
+
+  
 
   
    

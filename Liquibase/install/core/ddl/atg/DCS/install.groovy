@@ -22,6 +22,6 @@ databaseChangeLog {
     sqlFile(path:'Liquibase/install/core/ddl/atg/DCS/dcs_backing_maps_ddl.sql')
     sqlFile(path:'Liquibase/install/core/ddl/atg/DCS/commerce_site_ddl.sql')
 
-    sqlFile(path:'Liquibase/install/core/ddl/atg/DCS/create_cms_procedures.sql')
+    sqlFile(path:'Liquibase/install/core/ddl/atg/DCS/create_cms_procedures.sql',splitStatements:false)
   }
 }
